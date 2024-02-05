@@ -69,12 +69,12 @@
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\">
+                  <a class="dropdown-item" href="\esquadrilon\estoque\perfis\">
                     <i class="fs-4 bi bi-slash"></i> • Perfis
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\"> 
+                  <a class="dropdown-item" href="\esquadrilon\estoque\cores\"> 
                     <i class="fs-4 bi bi-palette"></i> • Cores
                   </a>
                 </li>
