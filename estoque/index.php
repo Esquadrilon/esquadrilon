@@ -52,7 +52,7 @@
           <div class="col mb-3">
             <label for="filtroCor" class="form-label">Cor</label>
             <select name="filtroCor" id="filtroCor" class="form-select">
-              <option value="" selected>Selecione...</option>
+              <option value="" selected>Todas as cores</option>
               <?php
               $cores = $conn->query("SELECT * FROM cores");
               while ($cor = $cores->fetch_object()) {
