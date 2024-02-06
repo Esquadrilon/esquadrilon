@@ -87,12 +87,11 @@
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="\esquadrilon\processos\">
-                    <i class="fs-4 bi bi-hourglass"></i> • Pendentes
-                  </a>
+                    <i class="fs-4 bi bi-hourglass"></i> • Processos Pendentes
                 </li>
                 <li>
                   <a class="dropdown-item" href="\esquadrilon\processos\list.php">
-                  <i class="fs-4 bi bi-calendar"></i> • Geral
+                  <i class="fs-4 bi bi-calendar"></i> • Todos os Processos
                   </a>
                 </li>
                 <li>
