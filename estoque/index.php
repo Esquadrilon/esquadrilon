@@ -23,13 +23,13 @@
   ?>
   <main class="container-fluid d-flex justify-content-center align-items-center my-3 w-100 flex-column">
     <div>
-      <a href="./pages/Entradas/create.php" class="btn btn-success mx-3 text-white fw-bold">
+      <a href="./entradas/create.php" class="btn btn-success mx-3 text-white fw-bold">
         <i class="bi bi-clipboard2-plus-fill"></i> Cadastrar Entrada
       </a>
-      <a href="./pages/Reservas/" class="btn btn-info mx-3 text-white fw-bold">
+      <a href="./reservas/create.php" class="btn btn-info mx-3 text-white fw-bold">
         <i class="bi bi-card-checklist"></i> Reservar Lista
       </a>
-      <a href="./pages/Saidas/create.php" class="btn btn-danger mx-3 text-white fw-bold">
+      <a href="./saidas/create.php" class="btn btn-danger mx-3 text-white fw-bold">
         <i class="bi bi-clipboard2-minus-fill"></i> Cadastrar Saída
       </a>
     </div>

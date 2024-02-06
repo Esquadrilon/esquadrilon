@@ -51,17 +51,17 @@
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\">
+                  <a class="dropdown-item" href="\esquadrilon\estoque\entradas\">
                     <i class="fs-4 bi bi-plus"></i> • Entradas
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\">
+                  <a class="dropdown-item" href="\esquadrilon\estoque\reservas\">
                     <i class="fs-4 bi bi-box-seam"></i> • Reservas
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\">
+                  <a class="dropdown-item" href="\esquadrilon\estoque\saidas\">
                     <i class="fs-4 bi bi-dash"></i> • Saídas
                   </a>
                 </li>
@@ -92,7 +92,7 @@
                 </li>
                 <li>
                   <a class="dropdown-item" href="\esquadrilon\processos\list.php">
-                    <i class="fs-4 bi bi-calendar-event"></i> • Geral
+                  <i class="fs-4 bi bi-calendar"></i> • Geral
                   </a>
                 </li>
                 <li>
@@ -100,7 +100,7 @@
                 </li>
                 <li>
                   <a class="dropdown-item" href="\esquadrilon\processos\create.php">
-                    <i class="fs-4 bi bi-calendar"></i> • Cadastrar Processo
+                    <i class="fs-4 bi bi-calendar-event"></i> • Cadastrar Processo
                   </a>
                 </li>
               </ul>
