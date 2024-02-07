@@ -87,7 +87,7 @@
                 <div class="col-2 fw-semibold"> ' . $entrada['origem'] . ' </div>
                 <div class="col fw-semibold"> ' . $entrada['nota'] . ' </div>
                 <div class="col-1 fw-semibold d-flex justify-content-center align-items-center">
-                  <a href="./pages/Entradas/update.php?id=' . $entrada['id'] . '" class="btn btn-primary">
+                  <a href="./entradas/update.php?id=' . $entrada['id'] . '" class="btn btn-primary">
                     <i class="bi bi-eye-fill"></i>
                   </a>
                 </div>
@@ -225,7 +225,7 @@
                 <div class="col-2 fw-semibold"> ' . $saida['destino'] . ' </div>
                 <div class="col fw-semibold"> ' . $saida['romaneio'] . ' </div>
                 <div class="col-1 fw-semibold d-flex justify-content-center align-items-center">
-                  <a href="./pages/Saidas/update.php?id=' . $saida['id'] . '" class="btn btn-primary">
+                  <a href="./saidas/update.php?id=' . $saida['id'] . '" class="btn btn-primary">
                     <i class="bi bi-eye-fill"></i>
                   </a>
                 </div>
