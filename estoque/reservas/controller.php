@@ -1,8 +1,6 @@
 <?php
   include_once('../../config/db/connection.php');
 
-  $data = [];
-
   $data = array(
     'romaneio',
     'observacoes',
@@ -19,6 +17,7 @@
       : [];
   }
 
+  $data = [];
 
   $redirect_success = "./index.php";
   $redirect_error = "./index.php";

@@ -21,7 +21,7 @@
     include_once('../../includes/navbar.php');
     include_once('../../includes/toast.php');
 
-    $data = isset($_POST['perfil']) ? $data = $_POST['perfil'] : [];
+    $data = isset($_POST['perfil']) ? $_POST['perfil'] : [];
     $perfis = [];
     foreach($data as $perfil){
       if($perfil != null) array_push($perfis,$perfil);
@@ -70,7 +70,7 @@
         </div>
       `;
 
-      let URL = `/estoque/pages/lista_estoque.php?perfil=${perfil}`;
+      let URL = `/esquadrilon/estoque/search.php?perfil=${perfil}`;
       
       fetch(URL)
         .then(response => response.json())
