@@ -24,9 +24,7 @@
   <main class="container d-flex justify-content-center align-items-center my-5">
     <div class="wrapper p-4 my-1 w-75 fs-4">
       <h1 class="text-center fs-1">Perfil</h1>
-      <form action="./controller.php" method="post">
-        <input type="hidden" name="acao" value="cadastrar">
-
+      <form action="./controller.php&action=register" method="post">
         <div class="row mt-2">
           <div class="col">
             <label for="codigo">Codigo</label>

@@ -20,6 +20,9 @@
     include_once('../../config/db/connection.php');
     include_once('../../includes/navbar.php');
     include_once('../../includes/toast.php');
+
+    $sql = "SELECT * FROM perfis";
+    $res = $conn->query($sql);
   ?>
   <main class="container-fluid px-5 my-3 w-100">
     <div class="text-center mb-4">
@@ -39,37 +42,32 @@
       </div>
       
       <?php
-      $sql = "SELECT * FROM perfis";
-      $res = $conn->query($sql);
+        if ($res->num_rows > 0) {
+          $perfis = $res->fetch_all(MYSQLI_ASSOC);
 
-      if ($res->num_rows > 0) {
-        $perfis = $res->fetch_all(MYSQLI_ASSOC);
-
-        foreach ($perfis as $perfil) {
-          echo '
-          <div class="row fs-5 fw-medium my-2 d-flex align-items-center p-1 rounded" style="background-color: rgba(3, 3, 3, 0.25)">
-            <div class="col"> ' . $perfil['codigo'] . ' </div>
-            <div class="col-3"> ' . $perfil['descricao'] . ' </div>
-            <div class="col"> ' . $perfil['peso'] . ' </div>
-            <div class="col"> ' . $perfil['nativo'] . ' </div>
-            <div class="col"> ' . $perfil['linha'] . ' </div>
-            <div class="col"> ' . $perfil['referencia'] . ' </div>
-            <div class="col-1 text-end">
-              <a href="./update.php?perfil=' . $perfil['codigo'] . '" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem">
-                <i class="bi bi-pencil-fill"></i>
-              </a>
-              <a href="./controller.php?perfil=' . $perfil['codigo'] . '&acao=deletar" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir esse perfil?\');">
-                <i class="bi bi-trash-fill"></i>
-              </a>
-            </div>
-          </div>';
-        };
-      } else {
-        echo "<p class='alert alert-danger text-center'>Nenhum resultado foi encontrado!</p>";
-      }
+          foreach ($perfis as $perfil) {
+            echo '
+            <div class="row fs-5 fw-medium my-2 d-flex align-items-center p-1 rounded" style="background-color: rgba(3, 3, 3, 0.25)">
+              <div class="col"> ' . $perfil['codigo'] . ' </div>
+              <div class="col-3"> ' . $perfil['descricao'] . ' </div>
+              <div class="col"> ' . $perfil['peso'] . ' </div>
+              <div class="col"> ' . $perfil['nativo'] . ' </div>
+              <div class="col"> ' . $perfil['linha'] . ' </div>
+              <div class="col"> ' . $perfil['referencia'] . ' </div>
+              <div class="col-1 text-end">
+                <a href="./update.php?perfil=' . $perfil['codigo'] . '" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem">
+                  <i class="bi bi-pencil-fill"></i>
+                </a>
+                <a href="./controller.php?perfil=' . $perfil['codigo'] . '&action=delete" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir esse perfil ('. $perfil['codigo'] .')?\');">
+                  <i class="bi bi-trash-fill"></i>
+                </a>
+              </div>
+            </div>';
+          };
+        } else {
+          echo "<p class='alert alert-danger text-center'>Nenhum resultado foi encontrado!</p>";
+        }
       ?>
-
-
     </div>
   </main>
   <footer></footer>

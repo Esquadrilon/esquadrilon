@@ -20,23 +20,20 @@
     include_once('../../config/db/connection.php');
     include_once('../../includes/navbar.php');
     include_once('../../includes/toast.php');
+    
+    $perfil = $_REQUEST['perfil'];
 
-    if (isset($_GET['perfil'])) {
-      $sql = "SELECT * FROM perfis WHERE codigo = '" . $_REQUEST['perfil'] . "'";
+    $sql = "SELECT * FROM perfis WHERE codigo = {$perfil}";
 
+    $res = $conn->query($sql);
 
-      $res = $conn->query($sql);
-
-      $row = $res->fetch_object();
-    }
+    $row = $res->fetch_object();
+    
   ?>
   <main class="container d-flex justify-content-center align-items-center my-5">
     <div class="wrapper p-4 my-1 w-75 fs-4">
       <h1 class="text-center fs-1">Perfil</h1>
-      <form action="./controller.php?id='<?php echo $_REQUEST['perfil'] ?>'" method="post">
-        <input type="hidden" name="acao" value="editar">
-
-
+      <form action="./controller.php?id=<?php echo $perfil ?>&action=update" method="post">
         <div class="row mt-2">
           <div class="col">
             <label for="codigo">Codigo</label>
@@ -73,7 +70,9 @@
 
         <div class="row mt-4">
           <div class="col w-50">
-            <button type="button" class="btn btn-danger w-100 fs-5 fw-semibold" onclick="window.location.href = './read.php'">Cancelar</button>
+            <a href="./controller.php?id=<?php echo $perfil ?>&action=delete" class="btn btn-danger w-100 fs-5 fw-semibold" onclick="return confirm('Tem certeza que deseja excluir esse perfil (<?php echo $perfil ?>)?')">
+              Deletar
+            </a>
           </div>
 
           <div class="col w-50">
