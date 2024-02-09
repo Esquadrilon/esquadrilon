@@ -24,27 +24,21 @@
   <main class="container d-flex justify-content-center align-items-center my-5">
     <div class="wrapper p-4 my-1 w-75 fs-4">
       <h1 class="text-center fs-1">Obra</h1>
-      <form action="./controller.php" method="post">
+      <form action="./controller.php?action=register" method="post">
         <input type="hidden" name="acao" value="cadastrar">
-
-        <div class="col mt-2">
-          <label for="nome ">Nome</label>
-          <input type="text" name="nome" id="nome" class="form-control" placeholder="Atmosphere">
-        </div>
-
         <div class="row  mt-2">
+          <div class="col">
+            <label for="nome ">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Atmosphere">
+          </div>
+
           <div class="col">
             <label for="situacao">Status da Obra</label>
             <input type="text" name="situacao" id="situacao" class="form-control" placeholder="Em construção">
           </div>
-
-          <div class="col">
-            <label for="website">URL do Site</label>
-            <input type="text" name="website" id="website" class="form-control" placeholder="https://exemplo.com.br/exemplo">
-          </div>
         </div>
 
-        <div class="col">
+        <div class="col mt-2">
           <label for="cliente_id">Cliente</label>
           <select name="cliente_id" id="cliente_id" class="form-select">
             <option value="0" selected>Selecione...</option>

@@ -77,7 +77,7 @@
               <a href="./update.php?id=' . $obra['id'] . '" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem">
                 <i class="bi bi-pencil-fill"></i>
               </a>
-              <a href="./controller.php?id=' . $obra['id'] . '&acao=deletar" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir essa obra?\');">
+              <a href="./controller.php?id=' . $obra['id'] . '&action=delete" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir essa obra?\');">
                 <i class="bi bi-trash-fill"></i>
               </a>
             </div>

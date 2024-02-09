@@ -32,23 +32,18 @@
   <main class="container d-flex justify-content-center align-items-center my-5">
     <div class="wrapper p-4 my-1 w-75 fs-4">
       <h1 class="text-center fs-1">Obra</h1>
-      <form action="./controller.php?id='<?php echo $_GET['id'] ?>'" method="post">
+      <form action="./controller.php?id=<?php echo $_GET['id'] ?>&action=update" method="post">
         <input type="hidden" name="acao" value="editar">
-
-        <div class="col mt-2">
-          <label for="nome ">Nome</label>
-          <input type="text" name="nome" id="nome" value="<?php print $row->nome ?>" class="form-control" placeholder="Atmosphere">
-        </div>
 
         <div class="row  mt-2">
           <div class="col">
-            <label for="situacao">Situacao</label>
-            <input type="text" name="situacao" id="situacao" value="<?php print $row->situacao ?>" class="form-control" placeholder="Em construção">
+            <label for="nome ">Nome</label>
+            <input type="text" name="nome" id="nome" value="<?php print $row->nome ?>" class="form-control" placeholder="Atmosphere">
           </div>
 
           <div class="col">
-            <label for="website">Site</label>
-            <input type="text" name="website" id="website" value="<?php print $row->website ?>" class="form-control" placeholder="https://exemplo.com.br/exemplo">
+            <label for="situacao">Situacao</label>
+            <input type="text" name="situacao" id="situacao" value="<?php print $row->situacao ?>" class="form-control" placeholder="Em construção">
           </div>
         </div>
 
