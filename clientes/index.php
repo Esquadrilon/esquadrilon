@@ -68,7 +68,7 @@
               <a href="./update.php?id=' . $cliente['id'] . '" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem">
                 <i class="bi bi-pencil-fill"></i>
               </a>
-              <a href="./controller.php?id=' . $cliente['id'] . '&acao=deletar" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir esse cliente?\');">
+              <a href="./controller.php?id=' . $cliente['id'] . '&action=delete" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir esse cliente?\');">
                 <i class="bi bi-trash-fill"></i>
               </a>
             </div>
