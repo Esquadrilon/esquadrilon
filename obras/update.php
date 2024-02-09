@@ -111,7 +111,9 @@
 
         <div class="row mt-4">
           <div class="col w-50">
-            <button type="button" class="btn btn-danger w-100 fs-5 fw-semibold" onclick="window.location.href = './read.php'">Cancelar</button>
+            <a href="./controller.php?id=<?php echo $_GET['id'] ?>&action=delete" class="btn btn-danger w-100 fs-5 fw-semibold" onclick="return confirm('Tem certeza que deseja excluir essa obra?')">
+              Deletar
+            </a>
           </div>
 
           <div class="col w-50">
