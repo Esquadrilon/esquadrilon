@@ -159,7 +159,7 @@
       `;
       data.appendChild(newRow);
       var perfilSelect = newRow.querySelector("select[name='perfil[]']");
-      fetch('../Perfis/listar_perfis.php')
+      fetch('../perfis/search.php')
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -233,7 +233,7 @@
       </div>
       `;
 
-      var URL = `/estoque/pages/lista_estoque.php?perfil=${perfil}&cor=${cor}`;
+      var URL = `/estoque/search.php?perfil=${perfil}&cor=${cor}`;
       fetch(URL)
         .then(response => response.json())
         .then(data => {

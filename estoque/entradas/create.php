@@ -158,7 +158,7 @@
       data.appendChild(newRow);
 
       var perfilSelect = newRow.querySelector("select[name='perfil[]']");
-      fetch('../Perfis/listar_perfis.php')
+      fetch('../perfis/search.php')
         .then(response => response.json())
         .then(data => {
           console.log(data);
