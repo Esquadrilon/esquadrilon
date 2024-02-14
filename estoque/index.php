@@ -157,10 +157,34 @@
         .then(data => {
           console.log(data);
           const csvString = convertToCSV(data);
-          navigator.clipboard.writeText(csvString)
+
+          // Criando um elemento temporário (textarea)
+          const tempTextArea = document.createElement('textarea');
+          tempTextArea.value = csvString;
+
+          // Adicionando o elemento temporário ao corpo do documento
+          document.body.appendChild(tempTextArea);
+
+          // Selecionando todo o texto dentro do elemento temporário
+          tempTextArea.select();
+          tempTextArea.setSelectionRange(0, tempTextArea.value.length);
+
+          // Executando o comando de cópia
+          const successful = document.execCommand('copy');
+
+          // Removendo o elemento temporário do corpo do documento
+          document.body.removeChild(tempTextArea);
+
+          // Verificando se a cópia foi bem-sucedida e exibindo uma mensagem
+          if (successful) {
+              alert('Dados copiados para a área de transferência');
+          } else {
+              alert('Não foi possível copiar os dados. Por favor, copie manualmente.');
+          }
         })
         .catch(error => console.error('Erro ao buscar estoque: ' + error));
     }
+
     
     function filtrar(event) {
       event.preventDefault();
