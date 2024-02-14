@@ -64,13 +64,21 @@
         </div>
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col">
-            <a class="btn btn-primary" onclick="filtrar(event)">
+            <button type="button" class="btn btn-primary" onclick="filtrar(event)">
               <i class="bi bi-filter"></i>
               Aplicar Filtros
-            </a>
+            </button>
           </div>
+
+          <div class="col d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" onclick="copy(event)">
+              Copiar
+              <i class="bi bi-send ms-2"></i>
+            </button>
+          </div>
+          
           <div class="col">
-            <p class="fs-4 d-flex justify-content-end align-items-center">
+            <p class="fs-4 d-flex justify-content-end">
               Peso Total: <span id="pesoTotal">0</span>
             </p>
           </div>
@@ -110,10 +118,49 @@
   <script>
     document.querySelector("form").addEventListener("keydown", function (event) {
       event.keyCode === 13
-      ?filtrar(event)
+      ? filtrar(event)
       : null;
       
     });
+
+    function convertToCSV(data) {
+      const csvRows = [];
+      // Obter os cabeçalhos
+      const headers = Object.keys(data[0]);
+      csvRows.push(headers.join(';'));
+
+      // Iterar sobre os dados e converter cada objeto em uma linha CSV
+      for (const row of data) {
+        const values = headers.map(header => {
+          const escaped = (''+row[header]).replace(/"/g, '\\"');
+          return `"${escaped}"`;
+        });
+        csvRows.push(values.join(';'));
+      }
+
+      // Juntar todas as linhas em uma única string CSV com quebras de linha
+      return csvRows.join('\n');
+    }
+
+    function copy(event) {
+      event.preventDefault();
+
+      let obra = document.getElementById("filtroObra").value;
+      let perfil = document.getElementById("filtroPerfil").value;
+      let tamanho = document.getElementById("filtroTamanho").value;
+      let cor = document.getElementById("filtroCor").value;
+
+      let URL = `/esquadrilon/estoque/search.php?obra=${obra}&perfil=${perfil}&tamanho=${tamanho}&cor=${cor}`;
+
+      fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          const csvString = convertToCSV(data);
+          navigator.clipboard.writeText(csvString)
+        })
+        .catch(error => console.error('Erro ao buscar estoque: ' + error));
+    }
     
     function filtrar(event) {
       event.preventDefault();
