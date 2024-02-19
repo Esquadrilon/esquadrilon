@@ -33,7 +33,7 @@
             <select name="obra_id" id="obra_id" class="form-select" required>
               <option value="" selected>Selecione...</option>
               <?php
-              $obras = $conn->query("SELECT * FROM obras");
+              $obras = $conn->query("SELECT * FROM obras ORDER BY nome ASC");
               while ($obra = $obras->fetch_object()) {
                 print "<option value='$obra->id'> $obra->nome </option>";
               }
@@ -46,7 +46,7 @@
             <select name="cor_fixa" id="cor_fixa" onchange="newRow()" class="form-select" required>
               <option value="" selected>Selecione...</option>
               <?php
-              $cores = $conn->query("SELECT * FROM cores");
+              $cores = $conn->query("SELECT * FROM cores ORDER BY nome ASC");
               while ($cor = $cores->fetch_object()) {
                 print "<option value=\"$cor->id\"> $cor->nome </option>";
               }

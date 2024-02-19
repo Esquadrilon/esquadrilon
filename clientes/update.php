@@ -63,10 +63,9 @@
         <div class="row mt-2">
           <div class="col">
             <label for="cidade_id">Cidade</label>
-            <select name="cidade_id" id="cidade_id" class="form-select">
-              <option value="0" selected>Selecione...</option>
+            <select name="cidade_id" id="cidade_id" class="form-select" required>
               <?php
-              $cidades = $conn->query("SELECT * FROM cidades");
+              $cidades = $conn->query("SELECT * FROM cidades ORDER BY nome ASC");
               while ($cidade = $cidades->fetch_object()) {
                 $cidade->id == $row->cidade_id
                   ? print "<option value=\"$cidade->id\" selected> $cidade->nome </option>"
@@ -78,10 +77,9 @@
 
           <div class="col">
             <label for="estado_id">Estado</label>
-            <select name="estado_id" id="estado_id" class="form-select">
-              <option value="0" selected>Selecione...</option>
+            <select name="estado_id" id="estado_id" class="form-select" required>
               <?php
-              $estados = $conn->query("SELECT * FROM estados");
+              $estados = $conn->query("SELECT * FROM estados ORDER BY nome ASC");
               while ($estado = $estados->fetch_object()) {
                 $selected = ($estado->id == $row->estado_id) ? "selected" : "";
                 echo "<option value=\"$estado->id\" $selected>$estado->nome</option>";

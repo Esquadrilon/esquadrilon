@@ -49,10 +49,9 @@
 
         <div class="col">
           <label for="cliente_id">Cliente</label>
-          <select name="cliente_id" id="cliente_id" class="form-select">
-            <option value="0" selected>Selecione...</option>
+          <select name="cliente_id" id="cliente_id" class="form-select" required>
             <?php
-            $clientes = $conn->query("SELECT * FROM clientes");
+            $clientes = $conn->query("SELECT * FROM clientes ORDER BY nome ASC");
             while ($cliente = $clientes->fetch_object()) {
               $cliente->id == $row->cliente_id
                 ? print "<option value=\"$cliente->id\" selected> $cliente->nome </option>"
@@ -70,8 +69,7 @@
         <div class="row mt-2">
           <div class="col">
             <label for="cidade_id">Cidade</label>
-            <select name="cidade_id" id="cidade_id" class="form-select">
-              <option value="0" selected>Selecione...</option>
+            <select name="cidade_id" id="cidade_id" class="form-select" required>
               <?php
               $cidades = $conn->query("SELECT * FROM cidades");
               while ($cidade = $cidades->fetch_object()) {
@@ -85,8 +83,7 @@
 
           <div class="col">
             <label for="estado_id">Estado</label>
-            <select name="estado_id" id="estado_id" class="form-select">
-              <option value="0" selected>Selecione...</option>
+            <select name="estado_id" id="estado_id" class="form-select" required>
               <?php
               $estados = $conn->query("SELECT * FROM estados");
               while ($estado = $estados->fetch_object()) {

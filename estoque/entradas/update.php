@@ -41,7 +41,7 @@
             <select name="obra_id" id="obra_id" class="form-select" required>
               <option value="" selected>Selecione...</option>
               <?php
-              $obras = $conn->query("SELECT * FROM obras");
+              $obras = $conn->query("SELECT * FROM obras ORDER BY nome ASC");
               while ($obra = $obras->fetch_object()) {
                 $obra->id == $row->obra_id
                   ? print "<option value=\"$obra->id\" selected> $obra->nome </option>"
@@ -99,7 +99,7 @@
             <select name="perfil" class="form-select">
               <option value="" selected>Selecione...</option>
               <?php
-              $perfis = $conn->query("SELECT * FROM perfis");
+              $perfis = $conn->query("SELECT * FROM perfis ORDER BY codigo ASC");
               while ($perfil = $perfis->fetch_object()) {
                 $perfil->codigo == $row->perfil_codigo
                   ? print "<option value=\"$perfil->codigo\" selected> $perfil->codigo </option>"
@@ -118,10 +118,9 @@
         <div class="row mt-2">
           <div class="col">
             <label for="cor">Cor</label>
-            <select name="cor" class="form-select">
-              <option value="" selected>Selecione...</option>
+            <select name="cor" class="form-select" required>
               <?php
-              $cores = $conn->query("SELECT * FROM cores");
+              $cores = $conn->query("SELECT * FROM cores ORDER BY nome ASC");
               while ($cor = $cores->fetch_object()) {
                 $cor->id == $row->cor_id
                   ? print "<option value=\"$cor->id\" selected> $cor->nome </option>"

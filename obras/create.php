@@ -43,7 +43,7 @@
           <select name="cliente_id" id="cliente_id" class="form-select">
             <option value="0" selected>Selecione...</option>
             <?php
-            $clientes = $conn->query("SELECT * FROM clientes");
+            $clientes = $conn->query("SELECT * FROM clientes ORDER BY nome ASC");
             while ($cliente = $clientes->fetch_object()) {
               print "<option value='$cliente->id'> $cliente->nome </option>";
             }
