@@ -1,26 +1,8 @@
 <?php
   include_once('../config/db/connection.php');
 
-  $data = array(
-    'os',
-    'obra_id',
-    'tipo',
-    'previsto',
-    'peso',
-    'perfil',
-    'componente',
-    'esteira',
-    'vidro',
-    'corte',
-    'usinagem',
-    'montagem'
-  );
-
-  foreach ($data as $input_name) {
-    ${$input_name} = isset($_POST[$input_name])
-      ? $_POST[$input_name]
-      : "";
-  };
+  $whereParams = "";
+  $orderParams = "";
 
   $sql = 
   "SELECT 
@@ -36,9 +18,16 @@
   LEFT JOIN
   obras o 
   ON
-  p.obra_id = o.id
-  ORDER BY
-  p.previsto ASC";
+  p.obra_id = o.id";
+
+
+  if (!empty($whereParams)) {
+    $sql .= " WHERE $whereParams";
+  }
+
+  // Adiciona a cláusula ORDER BY
+  $sql .= " ORDER BY $orderParams";
+  
 
   $res = $conn->query($sql);
 
