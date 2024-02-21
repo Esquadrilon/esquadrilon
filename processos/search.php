@@ -2,7 +2,7 @@
   include_once('../config/db/connection.php');
 
   $whereParams = "";
-  $orderParams = "";
+  $orderParams = "p.previsto ASC";
 
   $sql = 
   "SELECT 
@@ -20,6 +20,56 @@
   ON
   p.obra_id = o.id";
 
+  if (isset($_GET['os'])) {
+    $whereParams .= "p.os {$_GET['os']} AND ";
+  }
+
+  if (isset($_GET['previsto'])) {
+    $whereParams .= "p.previsto {$_GET['previsto']} AND ";
+  }
+
+  if (isset($_GET['obra_id'])) {
+    $whereParams .= "p.obra_id {$_GET['obra_id']} AND ";
+  }
+
+  if (isset($_GET['tipo'])) {
+    $whereParams .= "p.tipo {$_GET['tipo']} AND ";
+  }
+
+  if (isset($_GET['perfil'])) {
+    $whereParams .= "dp.perfil IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['vidro'])) {
+    $whereParams .= "dp.vidro IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['componente'])) {
+    $whereParams .= "dp.componente IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['corte'])) {
+    $whereParams .= "dp.corte IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['usinagem'])) {
+    $whereParams .= "dp.usinagem IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['montagem'])) {
+    $whereParams .= "dp.montagem IS NOT NULL AND ";
+  }
+
+  if (isset($_GET['esteira'])) {
+    $whereParams .= "dp.esteira IS NOT NULL AND ";
+  }
+
+
+  $whereParams = rtrim($whereParams, ' AND ');
+
+  if (isset($_GET['peso'])) {
+    $orderParams = "p.peso {$_GET['peso']}, " . $orderParams;
+  }
 
   if (!empty($whereParams)) {
     $sql .= " WHERE $whereParams";

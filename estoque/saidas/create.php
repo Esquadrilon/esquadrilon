@@ -43,7 +43,7 @@
 
           <div class="col">
             <label for="cor_fixa">Cor</label>
-            <select name="cor_fixa" id="cor_fixa" onchange="newRow()" class="form-select" required>
+            <select name="cor_fixa" id="cor_fixa" onblur="newRow()" class="form-select" required>
               <option value="" selected>Selecione...</option>
               <?php
               $cores = $conn->query("SELECT * FROM cores ORDER BY nome ASC");
