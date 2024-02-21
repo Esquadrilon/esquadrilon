@@ -21,19 +21,19 @@
   p.obra_id = o.id";
 
   if (isset($_GET['os'])) {
-    $whereParams .= "p.os {$_GET['os']} AND ";
+    $whereParams .= "p.id = {$_GET['os']} AND ";
   }
 
   if (isset($_GET['previsto'])) {
-    $whereParams .= "p.previsto {$_GET['previsto']} AND ";
+    $whereParams .= "p.previsto = '{$_GET['previsto']}' AND ";
   }
 
-  if (isset($_GET['obra_id'])) {
-    $whereParams .= "p.obra_id {$_GET['obra_id']} AND ";
+  if (isset($_GET['obra'])) {
+    $whereParams .= "p.obra_id = '{$_GET['obra']}' AND ";
   }
 
   if (isset($_GET['tipo'])) {
-    $whereParams .= "p.tipo {$_GET['tipo']} AND ";
+    $whereParams .= "p.tipo = '{$_GET['tipo']}' AND ";
   }
 
   if (isset($_GET['perfil'])) {
@@ -58,12 +58,13 @@
 
   if (isset($_GET['montagem'])) {
     $whereParams .= "dp.montagem IS NOT NULL AND ";
+  } else {
+    $whereParams .= "dp.montagem IS NULL AND ";
   }
 
   if (isset($_GET['esteira'])) {
     $whereParams .= "dp.esteira IS NOT NULL AND ";
   }
-
 
   $whereParams = rtrim($whereParams, ' AND ');
 
@@ -71,9 +72,8 @@
     $orderParams = "p.peso {$_GET['peso']}, " . $orderParams;
   }
 
-  if (!empty($whereParams)) {
-    $sql .= " WHERE $whereParams";
-  }
+  // Adiciona a cláusula WHERE
+  $sql .= " WHERE $whereParams";
 
   // Adiciona a cláusula ORDER BY
   $sql .= " ORDER BY $orderParams";
