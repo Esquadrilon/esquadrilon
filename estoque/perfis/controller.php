@@ -25,17 +25,17 @@
     'referencia' => $referencia
   );
 
-  switch ($_REQUEST["acao"]) {
-    case 'cadastrar':
+  switch ($_REQUEST["action"]) {
+    case 'register':
       CadastrarPerfil($sqlData);
       break;
 
-    case 'editar':
+    case 'update':
       
       AtualizarPerfil($_REQUEST['perfil'], $sqlData);
       break;
       
-    case 'deletar':
+    case 'delete':
       DeletarPerfil($_REQUEST['perfil']);
       break;
 
