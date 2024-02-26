@@ -21,7 +21,7 @@
   p.obra_id = o.id";
 
   if (isset($_GET['os'])) {
-    $whereParams .= "p.id = {$_GET['os']} AND ";
+    $whereParams .= "p.id LIKE '%{$_GET['os']}%' AND ";
   }
 
   if (isset($_GET['previsto'])) {
@@ -29,11 +29,11 @@
   }
 
   if (isset($_GET['obra'])) {
-    $whereParams .= "p.obra_id = '{$_GET['obra']}' AND ";
+    $whereParams .= "o.nome LIKE '%{$_GET['obra']}%' AND ";
   }
 
   if (isset($_GET['tipo'])) {
-    $whereParams .= "p.tipo = '{$_GET['tipo']}' AND ";
+    $whereParams .= "p.tipo LIKE '%{$_GET['tipo']}%' AND ";
   }
 
   if (isset($_GET['perfil'])) {

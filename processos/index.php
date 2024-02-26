@@ -20,52 +20,9 @@
       include_once('../config/db/connection.php');
       include_once('../includes/navbar.php');
       include_once('../includes/toast.php');
-
-      function validateLimit($data, $end, $limit) {
-        $limit_date = new DateTime($data['previsto']);
-        $limit_date->sub(new DateInterval("P{$limit}D"));
-
-        $data = date('d/m/Y', $limit_date->getTimestamp());
-
-        if($end != null) {
-          $bg = "bg-success";
-          $message = "Finalizado";
-          $data = date('d/m/Y', strtotime($end));
-        } else {
-          if(new DateTime() < $limit_date) {
-            $bg = "bg-info";
-            $message = "Pendente";
-          } else {
-            $bg = "bg-danger";
-            $message = "Atrasado";
-          }
-        }
-    
-        return "<div class=\"col $bg rounded-1\" title='$data'>$message</div>";
-      } 
-
-      $sql = 
-        "SELECT 
-          p.*,
-          o.nome as obra,
-          dp.*
-        FROM 
-          processos p
-        LEFT JOIN
-          datas_processo dp
-        ON
-          p.id = dp.processo_id
-        LEFT JOIN
-          obras o 
-        ON
-          p.obra_id = o.id
-        ORDER BY
-          p.previsto ASC";
-
-      $res = $conn->query($sql);
     ?>
     <main class="container-fluid d-flex flex-column justify-content-center align-items-center my-3 w-100">
-      <div class="filter w-75 fs-3">
+      <form class="w-75 fs-3">
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col mb-3">
             <label for="os" class="form-label">O.S</label>
@@ -89,10 +46,10 @@
             <label for="tipo" class="form-label">Tipo</label>
             <select name="tipo" id="tipo" class="form-select">
               <option value="" selected>Todos</option>
-              <option value="Esquadria" selected>Esquadria</option>
-              <option value="Contramarco" selected>Contramarco</option>
-              <option value="Arremate" selected>Arremate</option>
-              <option value="Acabamento" selected>Acabamento</option>
+              <option value="Esquadria">Esquadria</option>
+              <option value="Contramarco">Contramarco</option>
+              <option value="Arremate">Arremate</option>
+              <option value="Acabamento">Acabamento</option>
             </select>
           </div>
 
@@ -164,10 +121,10 @@
               </label>
             </div>
             <div class="col">
-              <input type="radio" class="btn-check" name="peso" id="menor" autocomplete="off">
+              <input type="radio" class="btn-check" name="peso" id="menor" value="ASC" autocomplete="off">
               <label class="btn btn-secondary" for="menor">Menor</label>
 
-              <input type="radio" class="btn-check" name="peso" id="maior" autocomplete="off">
+              <input type="radio" class="btn-check" name="peso" id="maior" value="DESC" autocomplete="off">
               <label class="btn btn-secondary" for="maior">Maior</label>
             </div>
           </div>
@@ -183,65 +140,64 @@
             </button>
           </div>
         </div>
-      </div>
-      
-      <?php
-        if ($res->num_rows > 0) {
-          $processos = $res->fetch_all(MYSQLI_ASSOC);
-
-          echo '
-          <div class="wrapper p-4 my-1 w-100 h-1 fs-4">
-            <div class="row fs-4 fw-bold d-flex align-items-center p-1 border-bottom border-2 border-white">
-              <div class="col">O.S</div>
-              <div class="col">Obra</div>
-              <div class="col">Peso</div>
-              <div class="col">Previsto</div>
-              <div class="col">Perfil</div>
-              <div class="col">Componente</div>
-              <div class="col">Esteira</div>
-              <div class="col">Vidro</div>
-              <div class="col">Corte</div>
-              <div class="col">Usinagem</div>
-              <div class="col">Montagem</div>
-              <div class="col"></div>
-            </div>
-          ';
-
-          foreach ($processos as $p) {
-            if($p["montagem"] == null) {
-              echo '
-              <div class="row fs-5 fw-medium my-2 d-flex align-items-center p-1 rounded" style="background-color: rgba(2, 2, 2, 0.25)">
-                <div class="col"> ' . number_format($p['id'], 0, ",", ".") . ' </div>
-                <div class="col"> ' . $p['obra'] . ' </div>
-                <div class="col"> ' . $p['peso'] . ' Kg </div>
-                <div class="col"> ' . date('d/m/y', strtotime($p['previsto'])) . ' </div> ';
-
-                echo validateLimit($p, $p['perfil'], 15); // perfil
-                echo $p['tipo'] == "Esquadria" ? validateLimit($p, $p['componente'], 15) : '<div class="col"> N / A </div>'; // componente
-                echo $p['tipo'] == "Esquadria" ? validateLimit($p, $p['esteira'], 5) : '<div class="col"> N / A </div>';  // esteira
-                echo $p['tipo'] == "Esquadria" ? validateLimit($p, $p['vidro'], 21) : '<div class="col"> N / A </div>'; // vidro
-                echo validateLimit($p, $p['corte'], 5); // corte
-                echo $p['tipo'] == "Esquadria" ? validateLimit($p, $p['usinagem'], 3) : '<div class="col"> N / A </div>';  // usinagem
-                echo validateLimit($p, $p['montagem'], 1); // montagem
-
-                echo '
-                <div class="col text-end">
-                  <a href="./update.php?os=' . $p['id'] . '" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem">
-                    <i class="bi bi-pencil-fill"></i>
-                  </a>
-                  <a href="./controller.php?os=' . $p['id'] . '&action=delete" class="btn btn-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem" onclick="return confirm(\'Tem certeza que deseja excluir essa O.S?\');">
-                    <i class="bi bi-trash-fill"></i>
-                  </a>
-                </div>
-              </div>';
-            }
-          };
-          
-          echo '</div>';
-        } else {
-          echo "<p class='alert alert-danger m-0 w-75'>Nenhum resultado foi encontrado!</p>";
-        }
-      ?>
+      </form>
+      <p class='alert alert-danger m-0 w-75'>Nenhum resultado foi encontrado!</p>
     </main>
+
+    <script>
+      document.querySelector("form").addEventListener("keydown", function (event) {
+        event.keyCode === 13
+        ? filtrar(event)
+        : null;
+        
+      });
+
+      function filtrar(event) {
+        event.preventDefault();
+
+        let res = [];
+        let URL = "/esquadrilon/processos/search.php?";
+
+        let os = document.getElementById("os").value;
+        let obra = document.getElementById("obra_id").value;
+        let tipo = document.getElementById("tipo").value;
+        let previsto = document.getElementById("previsto").value;
+        let perfil = document.getElementById("perfil");
+        let componente = document.getElementById("componente");
+        let esteira = document.getElementById("esteira");
+        let vidro = document.getElementById("vidro");
+        let corte = document.getElementById("corte");
+        let usinagem = document.getElementById("usinagem");
+        let montagem = document.getElementById("montagem");
+        let peso = document.querySelectorAll('input[type=radio]:checked')[0];
+
+        if(os !== '') URL += `os=${os}&`;
+        if(obra !== '') URL += `obra=${obra}&`;
+        if(tipo !== '') URL += `tipo=${tipo}&`;
+        if(previsto !== '') URL += `previsto=${previsto}&`;
+
+        if(perfil.checked) URL += `perfil&`;
+        if(componente.checked) URL += `componente&`;
+        if(esteira.checked) URL += `esteira&`;
+        if(vidro.checked) URL += `vidro&`;
+        if(corte.checked) URL += `corte&`;
+        if(usinagem.checked) URL += `usinagem&`;
+        if(montagem.checked) URL += `montagem&`;
+        
+        if(peso) URL += `peso=${peso.value}`;
+
+        console.log(URL);
+
+        fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Data: ", data);
+          res = data;
+        })
+        .catch(error => console.error('Ocorreu um erro ao buscar os processos das ordens de serviço 😡'));
+        
+        return res;
+      }
+    </script>
   </body>
 </html>
