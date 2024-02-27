@@ -90,11 +90,6 @@
                     <i class="fs-4 bi bi-hourglass"></i> • Processos Pendentes
                 </li>
                 <li>
-                  <a class="dropdown-item" href="\esquadrilon\processos\list.php">
-                  <i class="fs-4 bi bi-calendar"></i> • Todos os Processos
-                  </a>
-                </li>
-                <li>
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
