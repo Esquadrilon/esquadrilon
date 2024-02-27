@@ -45,22 +45,22 @@
         '
             <div class="row mt-2">
                 <div class="col"> 
-                    '. ucfirst($title) .'
+                  '. ucfirst($title) .'
                 </div>
                 <div class="col">
-                    '. date('d/m/Y', $limit_date->getTimestamp()) .'
+                  '. date('d/m/Y', $limit_date->getTimestamp()) .'
                 </div>
                 <div class="col px-4">
                     <input 
-                        type="date" 
-                        name="'. $title .'" 
-                        id="'. $title .'" 
-                        class="form-control w-75 fw-bold" 
-                        value="' . (($end !== null) ? date('Y-m-d', strtotime($end)) : null) . '" 
-                        min="' . date('Y-m-d', strtotime("yesterday")) . '">
+                      type="date" 
+                      name="'. $title .'" 
+                      id="'. $title .'" 
+                      class="form-control w-75 fw-bold" 
+                      value="' . (($end !== null) ? date('Y-m-d', strtotime($end)) : null) . '"
+                    >
                 </div>
                 <div class="col">
-                    '. $message .'
+                  '. $message .'
                 </div>
             </div>
         ';
