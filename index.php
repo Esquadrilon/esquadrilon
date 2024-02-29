@@ -16,11 +16,17 @@
     <?php
       include_once('./includes/navbar.php');
     ?>
-		<div class="container">
-			<div class="alert alert-info mt-5" role="alert">
-				<h4 class="alert-heading">Esta página não possui conteúdo.</h4>
-				<p class="m-0">Pedimos desculpas pelo transtorno. O conteúdo desta página está atualmente em construção ou não está disponível.</p>
-			</div>
-		</div>
+		<section class="container p-5 w-50 mt-5">
+      <div class="row">
+        <a href="./estoque" class="wrapper col text-center p-2 mx-4 text-light text-decoration-none">
+          <img src="./assets/img/estoque.png" alt="Icone de estoque" class="w-50">
+          <h2 class="mt-2 fs-1 fw-bold">Estoque</h2>
+        </a>
+        <a href="./processos" class="wrapper col text-center p-2 mx-2 text-light text-decoration-none">
+          <img src="./assets/img/processos.png" alt="Icone de processos" class="w-50">
+          <h2 class="mt-2 fs-1 fw-bold">Processos</h2>
+        </a>
+      </div>
+		</section>
   </body>
 </html>
