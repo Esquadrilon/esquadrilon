@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="/esquadrilon/css/global.css">
 
-  <title>Reserva</title>
+  <title>Reserva - <?php echo $_REQUEST['id'] ?></title>
 </head>
 
 <body>

@@ -86,7 +86,7 @@
       
       // SQL para atualizar o perfil
       $sql = "UPDATE estoque.perfis 
-      SET descricao=?, peso=?, nativo=?, linha=?, referencia=? WHERE codigo=?"
+      SET descricao=?, peso=?, nativo=?, linha=?, referencia=? WHERE codigo=?";
 
       // Parametros para inserir no SQL
       $params = array($data['descricao'], $data['peso'], $data['nativo'], $data['linha'], $data['referencia'], $codigo);
@@ -95,12 +95,12 @@
       Query($sql, $params);
 
       // Define a mensagem de sucesso
-      $message = "Perfil ({$data['nome']}) foi atualizado com sucesso!";
+      $message = "Perfil ({$codigo) foi atualizado com sucesso!";
     } catch (Exception $error) {
       // Define a mensagem de erro
       $message = $error
         ? $error->getMessage() 
-        : "Ocorreu um erro ao tentar atualizar perfil ({$codigo).";
+        : "Ocorreu um erro ao tentar atualizar perfil ({$codigo}).";
 
       // Redireciona para a pagina de listagem, alertando o erro
       Redirect('./index.php', false, $message);

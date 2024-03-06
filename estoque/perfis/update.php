@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="/esquadrilon/css/global.css">
 
-  <title>Atualizando Perfil</title>
+  <title>Atualizando Perfil - <?php echo $_REQUEST['perfil'] ?></title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
     
     $perfil = $_REQUEST['perfil'];
 
-    $sql = "SELECT * FROM perfis WHERE codigo = {$perfil}";
+    $sql = "SELECT * FROM perfis WHERE codigo = '{$perfil}'";
 
     $res = $conn->query($sql);
 
@@ -33,7 +33,7 @@
   <main class="container d-flex justify-content-center align-items-center my-5">
     <div class="wrapper p-4 my-1 w-75 fs-4">
       <h1 class="text-center fs-1">Perfil</h1>
-      <form action="./controller.php?id=<?php echo $perfil ?>&action=update" method="post">
+      <form action="./controller.php?perfil=<?php echo $perfil ?>&action=update" method="post">
         <div class="row mt-2">
           <div class="col">
             <label for="codigo">Codigo</label>
