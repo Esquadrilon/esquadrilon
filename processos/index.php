@@ -226,8 +226,8 @@
 
         row.innerHTML = `
           <div class="col-1">${data.id}</div>
-          <div class="col">${data.obra}</div>
-          <div class="col">${data.peso}Kg </div>
+          <div class="col" title="${data.lugar} → ${data.lote}">${data.obra}</div>
+          <div class="col" title="${data.tipologia} → ${data.tipo}">${data.peso}Kg </div>
           <div class="col">${new Date(data.previsto).toLocaleDateString('pt-BR')}</div>
           <div class="col m-0 p-0">${dataValidator(data.previsto, data.perfil, 15)}</div>
           ${data.tipo == "Esquadria" ? dataValidator(data.previsto, data.componente, 15) : '<div class="col m-0 p-0"> N / A </div>'}
@@ -267,7 +267,7 @@
           <div class="row fs-4 fw-bold d-flex align-items-center p-1 border-bottom border-2 border-white">
             <div class="col-1">O.S</div>
             <div class="col">Obra</div>
-            <div class="col">Status</div>
+            <div class="col">Peso</div>
             <div class="col">Previsto</div>
             <div class="col m-0 p-0">Perfil</div>
             <div class="col m-0 p-0">Componente</div>
