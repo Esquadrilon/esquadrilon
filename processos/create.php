@@ -30,7 +30,7 @@
             <select name="obra_id" id="obra_id" class="form-select">
               <option value="0" selected>Selecione...</option>
               <?php
-              $obras = $conn->query("SELECT * FROM obras");
+              $obras = $conn->query("SELECT * FROM obras ORDER BY nome");
               while ($obra = $obras->fetch_object()) {
                 print "<option value='$obra->id'> $obra->nome </option>";
               }
