@@ -227,7 +227,7 @@
         row.innerHTML = `
           <div class="col-1">${data.id}</div>
           <div class="col" title="${data.lugar} → ${data.lote}">${data.obra}</div>
-          <div class="col" title="${data.tipologia} → ${data.tipo}">${data.peso}Kg </div>
+          <div class="col" title="${data.tipo} → ${data.tipologia} → ${data.pecas_feitas ? data.pecas_feitas : 0}/${data.pecas}">${data.peso}Kg </div>
           <div class="col">${new Date(data.previsto).toLocaleDateString('pt-BR')}</div>
           <div class="col m-0 p-0">${dataValidator(data.previsto, data.perfil, 15)}</div>
           ${data.tipo == "Esquadria" ? dataValidator(data.previsto, data.componente, 15) : '<div class="col m-0 p-0"> N / A </div>'}
