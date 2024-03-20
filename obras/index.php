@@ -39,7 +39,9 @@
     LEFT JOIN
       cidades ci
     ON
-      o.cidade_id = ci.id";
+      o.cidade_id = ci.id
+    ORDER BY
+      o.nome";
     
     $res = $conn->query($sql);
   ?>

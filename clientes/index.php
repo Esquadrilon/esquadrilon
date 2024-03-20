@@ -51,7 +51,9 @@
       left join
         cidades
       on
-        cidades.id  = c.cidade_id";
+        cidades.id  = c.cidade_id
+      ORDER BY
+        c.nome";
       $res = $conn->query($sql);
 
       if ($res->num_rows > 0) {
