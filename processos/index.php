@@ -138,8 +138,7 @@
         </div>
       </form>
 
-      <section id="Table">
-
+      <section id="Table" style="display: block; max-height: 1000px; overflow-y: auto; border-collapse: collapse;">
       </section>
     </main>
 
@@ -264,7 +263,7 @@
         if(req.length > 0) {
           div.className = "wrapper w-100 fs-4 my-1 px-4";
           div.innerHTML = `
-          <div class="row fs-4 fw-bold d-flex align-items-center p-1 border-bottom border-2 border-white">
+          <div class="row fs-4 fw-bold d-flex position-sticky mt-2 align-items-center p-1 bg-secondary border-bottom border-3 border-warning rounded-2">
             <div class="col-1">O.S</div>
             <div class="col">Obra</div>
             <div class="col">Peso</div>
